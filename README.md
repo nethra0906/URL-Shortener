@@ -19,3 +19,12 @@ It is fully containerized using **Docker & Docker Compose**, making deployment a
 - **Database:** PostgreSQL
 - **Containerization:** Docker, Docker Compose
 
+---
+
+## 📦 Setup & Installation
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/your-username/url-shortener.git
+cd url-shortener
+
