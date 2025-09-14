@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: urluser
+      POSTGRES_PASSWORD: urlpass
+      POSTGRES_DB: urldb
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  app:
+    build: 
+      context: .
+      dockerfile: DockerFile
+    container_name: url-shortener
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgres://urluser:urlpass@db:5432/urldb
+      ADMIN_API_KEY: change_this_strong_key
+      BASE_URL: http://localhost:3000
+      IP_SALT: change_this_salt
+      PORT: 3000
+    depends_on:
+      - db
+
+volumes:
+  db_data:
