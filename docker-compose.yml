@@ -15,7 +15,7 @@ services:
     build: 
       context: .
       dockerfile: DockerFile
-    container_name: url-shortener
+    container_name: url-shortener-db-1
     ports:
       - "3000:3000"
     environment:
