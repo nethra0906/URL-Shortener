@@ -1,7 +1,9 @@
 version: "3.9"
+
 services:
   db:
     image: postgres:16-alpine
+    container_name: url-shortener-db
     environment:
       POSTGRES_USER: urluser
       POSTGRES_PASSWORD: urlpass
@@ -10,22 +12,29 @@ services:
       - "5432:5432"
     volumes:
       - db_data:/var/lib/postgresql/data
+    networks:
+      - url-net
 
   app:
-    build: 
+    build:
       context: .
-      dockerfile: DockerFile
-    container_name: url-shortener-db-1
+      dockerfile: DockerFile   
+    container_name: url-shortener-app
     ports:
       - "3000:3000"
     environment:
-      DATABASE_URL: postgres://urluser:urlpass@db:5432/urldb
+      DATABASE_URL: postgresql://urluser:urlpass@db:5432/urldb?schema=public
       ADMIN_API_KEY: change_this_strong_key
       BASE_URL: http://localhost:3000
       IP_SALT: change_this_salt
       PORT: 3000
     depends_on:
       - db
+    networks:
+      - url-net
 
 volumes:
   db_data:
+
+networks:
+  url-net:

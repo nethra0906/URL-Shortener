@@ -166,7 +166,7 @@ app.get("/:slug", async (req, res) => {
 /** Health */
 app.get("/health", (_req, res) => res.json({ ok: true }));
 
-app.listen(PORT, async () => {
+app.listen(PORT, "0.0.0.0", async () => {
   try {
     await prisma.$connect();
     console.log(`Server listening on port ${PORT}`);
