@@ -1,5 +1,6 @@
 import "dotenv/config";
 import express from "express";
+import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import Joi from "joi";
@@ -18,6 +19,15 @@ const {
 } = process.env;
 
 app.set("trust proxy", true); // trust x-forwarded-for when behind ALB/proxy
+
+// CORS middleware - must come before helmet for proper setup
+app.use(cors({
+  origin: '*', // Allow all origins (for development)
+  methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'x-api-key'],
+  credentials: true
+}));
+
 app.use(helmet());
 app.use(express.json());
 app.use(morgan("dev"));
