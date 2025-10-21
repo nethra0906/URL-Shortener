@@ -1,30 +1,27 @@
-# URL Shortener Project🔗
+# 🔗 URL Shortener
 
-A simple and efficient **URL Shortener** application built with **Node.js, Express, and PostgreSQL**.  
-The app lets you shorten long URLs, store them in a database, and redirect users seamlessly to the original link.  
-It is fully containerized using **Docker & Docker Compose**, making deployment and scaling easier.
+A simple **URL Shortener** web app built using **React (Frontend)** and **Flask (Backend)**.  
+This app allows users to shorten long URLs and quickly redirect to the original links.
 
 ---
 
 ## 🚀 Features
-- Shorten long URLs into easy-to-share links.
-- Redirect shortened links to the original URL.
-- Persistent storage with PostgreSQL.
-- Containerized with Docker for consistent deployment.
+- Shorten long URLs into short, easy-to-share links  
+- Redirect shortened links to the original URLs  
+- Clean and responsive UI built with React  
+- Simple Flask API backend  
 
 ---
 
 ## 🛠️ Tech Stack
-- **Backend:** Node.js, Express.js
-- **Database:** PostgreSQL
-- **Containerization:** Docker, Docker Compose
+**Frontend:** React, HTML, CSS, JavaScript  
+**Backend:** Flask (Python)  
 
 ---
 
-## 📦 Setup & Installation
+## 📦 Setup & Run
 
-### 1. Clone the repository
+### 🧩 1. Clone the Repository
 ```bash
 git clone https://github.com/your-username/url-shortener.git
 cd url-shortener
-
