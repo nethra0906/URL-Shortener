@@ -67,43 +67,53 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <h1>🔗 URL Shortener</h1>
-      <form onSubmit={handleSubmit} noValidate>
-        <label htmlFor="url-input" className="visually-hidden">
-          URL to shorten
-        </label>
-        <input
-          id="url-input"
-          type="text"
-          placeholder="Enter your URL..."
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-          aria-invalid={Boolean(error)}
-          aria-describedby={error ? "url-error" : undefined}
-        />
-        <button type="submit" disabled={isLoading}>
-          {isLoading ? "Shortening..." : "Shorten"}
-        </button>
-      </form>
+    <div className="page">
+      <div className="sheet">
+        <header className="masthead">
+          <span className="kicker">Local tool / no signup</span>
+          <h1>URL Shortener</h1>
+        </header>
 
-      {error && (
-        <p id="url-error" className="error" role="alert">
-          {error}
-        </p>
-      )}
-
-      {shortUrl && (
-        <div className="result" aria-live="polite">
-          <p>Shortened URL:</p>
-          <a href={shortUrl} target="_blank" rel="noopener noreferrer">
-            {shortUrl}
-          </a>
-          <button type="button" className="copy-button" onClick={handleCopy}>
-            {copied ? "Copied!" : "Copy"}
+        <form onSubmit={handleSubmit} noValidate className="form-row">
+          <div className="field">
+            <label htmlFor="url-input">Paste a link</label>
+            <input
+              id="url-input"
+              type="text"
+              placeholder="https://example.com/a/very/long/path"
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+              aria-invalid={Boolean(error)}
+              aria-describedby={error ? "url-error" : undefined}
+              autoComplete="off"
+              spellCheck="false"
+            />
+          </div>
+          <button type="submit" className="run-button" disabled={isLoading}>
+            {isLoading ? "working" : "shorten"}
           </button>
-        </div>
-      )}
+        </form>
+
+        {error && (
+          <p id="url-error" className="error" role="alert">
+            <span aria-hidden="true">＋</span> {error}
+          </p>
+        )}
+
+        {shortUrl && (
+          <div className="result" aria-live="polite">
+            <span className="result-label">02 / result</span>
+            <div className="result-row">
+              <a href={shortUrl} target="_blank" rel="noopener noreferrer">
+                {shortUrl}
+              </a>
+              <button type="button" className="copy-button" onClick={handleCopy}>
+                {copied ? "copied" : "copy"}
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

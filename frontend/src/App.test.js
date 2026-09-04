@@ -9,7 +9,7 @@ afterEach(() => {
 });
 
 function typeUrl(value) {
-  fireEvent.change(screen.getByLabelText(/url to shorten/i), {
+  fireEvent.change(screen.getByLabelText(/paste a link/i), {
     target: { value },
   });
 }
